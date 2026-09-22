@@ -35,7 +35,9 @@ export default function EnquiryCTA() {
           </p>
 
           <div className="cta-action-row">
-            <a
+            <motion.a
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
               href="#contact"
               onClick={(e) => {
                 e.preventDefault();
@@ -45,15 +47,17 @@ export default function EnquiryCTA() {
             >
               <Calendar size={16} />
               Schedule A Private Tour
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
               href="tel:+919876543210"
               className="btn-white-ghost"
             >
               <PhoneCall size={16} />
               Speak With Concierge
-            </a>
+            </motion.a>
           </div>
         </motion.div>
       </div>

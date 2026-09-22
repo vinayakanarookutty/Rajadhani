@@ -37,6 +37,8 @@ export default function Events() {
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.99 }}
               className="card-luxury-dark event-card"
             >
               <div>

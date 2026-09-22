@@ -59,26 +59,30 @@ export default function Hero() {
           grand cultural celebrations.
         </motion.p>
 
-        {/* Minimal CTAs */}
+        {/* Minimal CTAs with Micro-animations */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.85, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="hero-cta-group"
         >
-          <button
+          <motion.button
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.96 }}
             onClick={() => scrollToSection('#spaces')}
             className="btn-gold"
           >
             Explore Spaces
             <ArrowRight size={15} />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.96 }}
             onClick={() => scrollToSection('#contact')}
             className="btn-white-ghost"
           >
             Check Availability
-          </button>
+          </motion.button>
         </motion.div>
       </div>
 
@@ -92,14 +96,18 @@ export default function Hero() {
         <div className="site-container">
           <div className="hero-stats-grid">
             {STATS.map((stat) => (
-              <div key={stat.label} className="hero-stat-card">
+              <motion.div
+                key={stat.label}
+                whileHover={{ y: -2 }}
+                className="hero-stat-card"
+              >
                 <span className="hero-stat-value">
                   {stat.value}
                 </span>
                 <span className="hero-stat-label">
                   {stat.label}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

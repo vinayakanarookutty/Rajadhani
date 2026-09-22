@@ -34,17 +34,19 @@ export default function Spaces() {
           </p>
         </motion.div>
 
-        {/* Space Selector Tabs */}
+        {/* Space Selector Tabs with Micro-animations */}
         <div className="spaces-tab-nav">
           {SPACES.map((space, idx) => (
-            <button
+            <motion.button
               key={space.id}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => setActiveTab(idx)}
               className={`space-tab-btn ${activeTab === idx ? 'active' : ''}`}
             >
               {activeTab === idx && <Sparkles size={13} style={{ color: 'var(--gold-primary)' }} />}
               {space.title}
-            </button>
+            </motion.button>
           ))}
         </div>
 
@@ -115,7 +117,9 @@ export default function Spaces() {
 
               {/* Action Button */}
               <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--stone-border-light)' }}>
-                <a
+                <motion.a
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.96 }}
                   href="#contact"
                   onClick={(e) => {
                     e.preventDefault();
@@ -126,7 +130,7 @@ export default function Spaces() {
                 >
                   Reserve This Space
                   <ArrowRight size={15} />
-                </a>
+                </motion.a>
               </div>
             </div>
           </motion.div>

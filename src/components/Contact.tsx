@@ -119,11 +119,13 @@ export default function Contact() {
                 { icon: MapPin, label: 'Location & Address', value: CONTACT.address, href: CONTACT.mapUrl, target: '_blank' },
                 { icon: Clock, label: 'Concierge Hours', value: CONTACT.workingHours, href: '#', target: '_self' },
               ].map(({ icon: Icon, label, value, href, target }) => (
-                <a
+                <motion.a
                   key={label}
                   href={href}
                   target={target}
                   rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.98 }}
                   className="card-luxury-light concierge-card-link"
                 >
                   <div className="concierge-medallion">
@@ -137,13 +139,15 @@ export default function Contact() {
                       {value}
                     </p>
                   </div>
-                </a>
+                </motion.a>
               ))}
             </div>
 
             {/* Direct Action Triggers */}
             <div className="concierge-triggers-row">
-              <a
+              <motion.a
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.96 }}
                 href={`https://wa.me/${CONTACT.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -151,14 +155,16 @@ export default function Contact() {
               >
                 <MessageCircle size={17} />
                 WhatsApp Us
-              </a>
-              <a
+              </motion.a>
+              <motion.a
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.96 }}
                 href={`tel:${CONTACT.phone.replace(/\s/g, '')}`}
                 className="btn-primary"
               >
                 <Phone size={15} />
                 Call Concierge
-              </a>
+              </motion.a>
             </div>
 
             {/* Location Map Frame with Direct Link */}
@@ -320,10 +326,15 @@ export default function Contact() {
                   />
                 </div>
 
-                <button type="submit" className="btn-gold form-submit-full">
+                <motion.button
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  type="submit"
+                  className="btn-gold form-submit-full"
+                >
                   <Send size={16} />
                   Submit Booking Inquiry
-                </button>
+                </motion.button>
               </form>
             )}
           </motion.div>

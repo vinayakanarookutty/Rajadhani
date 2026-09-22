@@ -2029,6 +2029,32 @@ ul, ol {
   justify-content: center;
 }
 
+.whatsapp-pulse-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-pill);
+  border: 2px solid rgba(37, 211, 102, 0.6);
+  animation: whatsappRingPulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes whatsappRingPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+@keyframes ripplePulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.6); }
+  70% { transform: scale(1); box-shadow: 0 0 0 18px rgba(197, 160, 89, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
 /* ==========================================================================
    Responsive Media Queries (Refined Spacing & Fluid Grids)
    ========================================================================== */

@@ -82,13 +82,15 @@ export default function Facilities() {
         {/* Category Filter Pills */}
         <div className="facilities-filter-row">
           {CATEGORIES.map((cat) => (
-            <button
+            <motion.button
               key={cat.id}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveCategory(cat.id)}
               className={`facilities-filter-btn ${activeCategory === cat.id ? 'active' : ''}`}
             >
               {cat.label}
-            </button>
+            </motion.button>
           ))}
         </div>
 
@@ -104,6 +106,8 @@ export default function Facilities() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.35, delay: i * 0.03 }}
                   className="card-luxury-light facility-card"
                 >

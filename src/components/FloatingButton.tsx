@@ -10,12 +10,14 @@ export default function FloatingButton() {
       rel="noopener noreferrer"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 1.5, duration: 0.5, type: 'spring', stiffness: 200 }}
-      whileHover={{ scale: 1.06 }}
-      whileTap={{ scale: 0.95 }}
+      transition={{ delay: 1, duration: 0.5, type: 'spring', stiffness: 200 }}
+      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.94 }}
       className="floating-whatsapp-btn"
       aria-label="Chat on WhatsApp"
     >
+      <span className="whatsapp-pulse-ring" />
+
       {/* Desktop: pill with text */}
       <div className="floating-desktop-pill">
         <MessageCircle size={19} />
