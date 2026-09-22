@@ -24,7 +24,9 @@ export const CONTACT = {
   workingHours: 'Mon – Sun: 9:00 AM – 9:00 PM',
   whatsapp: '+919876543210',
   mapEmbedUrl:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929!2d76.3!3d10.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDAyJzI0LjAiTiA3NsKwMTgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.568472551469!2d76.33727127592477!3d9.521015720938095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0885e24c3fb4d3%3A0x88625b41f0839714!2sRajadhani%20convention%20center!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin',
+  mapUrl:
+    'https://www.google.com/maps/place/Rajadhani+convention+center/@9.5210104,76.3398462,17z/data=!3m1!4b1!4m6!3m5!1s0x3b0885e24c3fb4d3:0x88625b41f0839714!8m2!3d9.5210104!4d76.3398462!16s%2Fg%2F11slqpqq6q',
 };
 
 export const SOCIAL = {

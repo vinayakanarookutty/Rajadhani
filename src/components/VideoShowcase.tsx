@@ -30,29 +30,24 @@ export default function VideoShowcase() {
   };
 
   return (
-    <section className="py-28 md:py-36 bg-[#090a0e] relative overflow-hidden border-y border-gold/20">
-      {/* Cinematic Ambient Glow Behind Video */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-radial-gold opacity-20 pointer-events-none blur-3xl" />
-
-      <div ref={ref} className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+    <section className="cinema-section section-spacing">
+      <div ref={ref} className="site-container">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-2xl mx-auto mb-14 lg:mb-18"
+          className="section-header text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-gold/10 backdrop-blur-md mb-4">
-            <Film size={13} className="text-gold" />
-            <span className="text-[10.5px] tracking-[0.25em] text-gold-light uppercase font-semibold">
-              Cinematic Experience
-            </span>
-          </div>
+          <span className="eyebrow text-gold-light">
+            <Film size={13} style={{ color: 'var(--gold-primary)' }} />
+            Cinematic Experience
+          </span>
 
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mt-3 font-normal">
-            A Glimpse Into <span className="italic text-gold-shimmer font-light">Excellence</span>
+          <h2 className="section-title" style={{ color: '#ffffff' }}>
+            A Glimpse Into <span className="text-gold-shimmer" style={{ fontStyle: 'italic', fontWeight: 300 }}>Excellence</span>
           </h2>
-          <p className="mt-3 text-stone-300 text-sm sm:text-base font-light">
+          <p className="section-subtitle" style={{ color: 'var(--text-light)' }}>
             Witness the grand ambiance, celebrations, and architectural majesty in motion.
           </p>
         </motion.div>
@@ -63,10 +58,10 @@ export default function VideoShowcase() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="max-w-5xl mx-auto p-3 sm:p-4 bg-[#14161f] border border-gold/35 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.8)] relative group cursor-pointer"
+          className="cinema-screen-wrap"
           onClick={togglePlay}
         >
-          <div className="relative aspect-video overflow-hidden rounded-xl bg-black">
+          <div className="cinema-video-frame">
             {shouldLoad && (
               <video
                 ref={videoRef}
@@ -74,7 +69,6 @@ export default function VideoShowcase() {
                 playsInline
                 loop
                 poster={IMAGES.auditoriumInterior}
-                className="w-full h-full object-cover"
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
               >
@@ -82,29 +76,19 @@ export default function VideoShowcase() {
               </video>
             )}
 
-            {/* Video Dark Overlay when paused */}
-            <div
-              className={`absolute inset-0 transition-opacity duration-400 flex items-center justify-center ${
-                isPlaying
-                  ? 'bg-transparent opacity-0 group-hover:opacity-100 group-hover:bg-black/30'
-                  : 'bg-black/50'
-              }`}
-            >
-              {/* Luxury Play/Pause Button */}
+            {/* Dark Overlay with Luxury Play Button */}
+            <div className={`cinema-overlay-trigger ${isPlaying ? 'playing' : ''}`}>
               <motion.button
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-gold/70 backdrop-blur-xl bg-gold/20 hover:bg-gold flex items-center justify-center text-white transition-all duration-300 shadow-[0_0_30px_rgba(197,160,89,0.5)] cursor-pointer group/btn"
+                className="cinema-play-btn"
                 onClick={(e) => {
                   e.stopPropagation();
                   togglePlay();
                 }}
                 aria-label={isPlaying ? 'Pause video' : 'Play video'}
               >
-                {!isPlaying && (
-                  <span className="absolute inset-0 rounded-full border border-gold animate-ping opacity-35 pointer-events-none" />
-                )}
-                {isPlaying ? <Pause size={28} /> : <Play size={28} className="ml-1 text-gold-bright group-hover/btn:text-white" />}
+                {isPlaying ? <Pause size={28} /> : <Play size={28} style={{ marginLeft: '4px' }} />}
               </motion.button>
             </div>
 
@@ -114,7 +98,15 @@ export default function VideoShowcase() {
                 e.stopPropagation();
                 toggleFullscreen();
               }}
-              className="absolute top-4 right-4 p-2.5 text-white/80 hover:text-white bg-black/60 backdrop-blur-md rounded-lg border border-white/20 transition-colors opacity-0 group-hover:opacity-100"
+              style={{
+                position: 'absolute',
+                top: '1rem',
+                right: '1rem',
+                padding: '0.6rem',
+                borderRadius: 'var(--radius-sm)',
+                backgroundColor: 'rgba(0,0,0,0.5)',
+                color: '#ffffff',
+              }}
               aria-label="Fullscreen"
             >
               <Maximize2 size={18} />
@@ -122,8 +114,8 @@ export default function VideoShowcase() {
           </div>
 
           {/* Bottom Editorial Quote */}
-          <div className="py-6 px-4 text-center border-t border-white/10 mt-3">
-            <p className="font-heading text-lg sm:text-xl text-gold-light italic font-light">
+          <div className="cinema-quote-bar">
+            <p className="cinema-quote-text">
               &ldquo;More than a venue — a timeless setting for life&apos;s most cherished milestones.&rdquo;
             </p>
           </div>

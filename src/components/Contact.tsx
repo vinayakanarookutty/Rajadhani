@@ -71,77 +71,69 @@ export default function Contact() {
     }
   };
 
-  const inputClass = (field: string) =>
-    `w-full px-4 py-4 bg-white border text-sm text-charcoal rounded-xl placeholder:text-stone-400 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all duration-300 shadow-2xs ${
-      errors[field] ? 'border-red-400 bg-red-50/20' : 'border-[#dfdbd2] hover:border-[#cdc9bf]'
-    }`;
-
   return (
-    <section id="contact" className="py-28 md:py-36 bg-[#fcfbf9] relative overflow-hidden border-t border-[#e8e5de]">
-      {/* Background Ambience */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-radial-gold opacity-30 pointer-events-none" />
-
-      <div ref={ref} className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+    <section id="contact" className="contact-section section-spacing">
+      <div ref={ref} className="site-container">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-2xl mx-auto mb-16 lg:mb-24"
+          className="section-header text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-gold/10 backdrop-blur-md mb-4">
-            <Sparkles size={13} className="text-gold" />
-            <span className="text-[10.5px] tracking-[0.25em] text-gold-dark uppercase font-semibold">
-              Concierge Services
-            </span>
-          </div>
+          <span className="eyebrow">
+            <Sparkles size={13} style={{ color: 'var(--gold-primary)' }} />
+            Concierge Services
+          </span>
 
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-charcoal mt-2 font-normal">
-            Reserve Your <span className="italic text-gold-dark font-medium">Date</span>
+          <h2 className="section-title">
+            Reserve Your <span style={{ fontStyle: 'italic', color: 'var(--gold-dark)', fontWeight: 500 }}>Date</span>
           </h2>
-          <p className="mt-3 text-muted text-sm sm:text-base font-light">
+          <p className="section-subtitle" style={{ color: 'var(--text-muted)' }}>
             Plan your next hallmark event with our dedicated event hospitality directors.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="contact-grid">
           {/* Left: Concierge Info & Location */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="lg:col-span-5 space-y-6"
+            className="concierge-cards-col"
           >
             <div>
-              <h3 className="font-heading text-2xl text-charcoal font-normal">
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.75rem', fontWeight: 400 }}>
                 Venue Concierge Desk
               </h3>
-              <p className="text-muted mt-2 text-sm leading-relaxed font-light">
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.5rem', lineHeight: 1.6, fontWeight: 300 }}>
                 We invite you to experience the spatial grandeur firsthand. Reach out to schedule an
                 exclusive walkthrough or request customized banquet packages.
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
               {[
-                { icon: Phone, label: 'Direct Inquiries', value: CONTACT.phone, href: `tel:${CONTACT.phone.replace(/\s/g, '')}` },
-                { icon: Mail, label: 'Electronic Mail', value: CONTACT.email, href: `mailto:${CONTACT.email}` },
-                { icon: MapPin, label: 'Location & Address', value: CONTACT.address, href: '#' },
-                { icon: Clock, label: 'Concierge Hours', value: CONTACT.workingHours, href: '#' },
-              ].map(({ icon: Icon, label, value, href }) => (
+                { icon: Phone, label: 'Direct Inquiries', value: CONTACT.phone, href: `tel:${CONTACT.phone.replace(/\s/g, '')}`, target: '_self' },
+                { icon: Mail, label: 'Electronic Mail', value: CONTACT.email, href: `mailto:${CONTACT.email}`, target: '_self' },
+                { icon: MapPin, label: 'Location & Address', value: CONTACT.address, href: CONTACT.mapUrl, target: '_blank' },
+                { icon: Clock, label: 'Concierge Hours', value: CONTACT.workingHours, href: '#', target: '_self' },
+              ].map(({ icon: Icon, label, value, href, target }) => (
                 <a
                   key={label}
                   href={href}
-                  className="card-luxury-light p-4 sm:p-5 border border-[#dfdbd2] rounded-xl flex items-start gap-4 group cursor-pointer shadow-xs"
+                  target={target}
+                  rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+                  className="card-luxury-light concierge-card-link"
                 >
-                  <div className="icon-medallion !w-11 !h-11 flex-shrink-0 shadow-2xs">
+                  <div className="concierge-medallion">
                     <Icon size={18} />
                   </div>
                   <div>
-                    <p className="text-[10px] tracking-[0.2em] uppercase text-gold-dark font-semibold mb-0.5">
+                    <p className="concierge-card-lbl">
                       {label}
                     </p>
-                    <p className="text-sm font-semibold text-charcoal group-hover:text-gold-dark transition-colors">
+                    <p className="concierge-card-val">
                       {value}
                     </p>
                   </div>
@@ -150,12 +142,12 @@ export default function Contact() {
             </div>
 
             {/* Direct Action Triggers */}
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="concierge-triggers-row">
               <a
                 href={`https://wa.me/${CONTACT.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#25D366] text-white text-xs tracking-[0.14em] uppercase font-semibold rounded-xl hover:bg-[#20ba59] transition-all shadow-md hover:shadow-lg"
+                className="whatsapp-pill-btn"
               >
                 <MessageCircle size={17} />
                 WhatsApp Us
@@ -169,18 +161,31 @@ export default function Contact() {
               </a>
             </div>
 
-            {/* Location Map Frame */}
-            <div className="aspect-[16/9] rounded-2xl bg-stone-100 border border-[#dfdbd2] overflow-hidden mt-6 shadow-md">
+            {/* Location Map Frame with Direct Link */}
+            <div className="map-embed-container">
               <iframe
                 src={CONTACT.mapEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title={`${VENUE.fullName} Location`}
+                title={`${VENUE.fullName} Location - Rajadhani Convention Centre`}
               />
+            </div>
+            
+            {/* Direct Google Maps Action */}
+            <div style={{ marginTop: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 1rem', background: '#ffffff', border: '1px solid var(--stone-border)', borderRadius: 'var(--radius-md)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8125rem', color: 'var(--text-charcoal)', fontWeight: 500 }}>
+                <MapPin size={16} style={{ color: 'var(--gold-primary)' }} />
+                <span>Rajadhani Convention Centre, Kerala</span>
+              </div>
+              <a
+                href={CONTACT.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold"
+                style={{ padding: '0.45rem 1rem', fontSize: '0.6875rem', letterSpacing: '0.12em' }}
+              >
+                Directions
+              </a>
             </div>
           </motion.div>
 
@@ -189,62 +194,60 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="lg:col-span-7"
           >
             {submitted ? (
-              <div className="h-full flex items-center justify-center text-center p-12 bg-white border border-gold/30 rounded-2xl shadow-xl">
-                <div>
-                  <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-gold/15 text-gold rounded-full border border-gold/30">
-                    <CheckCircle2 size={32} />
-                  </div>
-                  <h3 className="font-heading text-3xl text-charcoal font-normal">Inquiry Received</h3>
-                  <p className="text-muted mt-3 max-w-md mx-auto text-sm leading-relaxed font-light">
-                    Thank you for contacting {VENUE.fullName}. Our event management desk will review
-                    your requested dates and contact you within 24 hours.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setSubmitted(false);
-                      setFormData({
-                        name: '',
-                        phone: '',
-                        email: '',
-                        eventType: '',
-                        eventDate: '',
-                        guests: '',
-                        message: '',
-                      });
-                    }}
-                    className="btn-gold mt-8"
-                  >
-                    Submit Another Inquiry
-                  </button>
+              <div className="card-luxury-light" style={{ padding: '3.5rem 2rem', textAlign: 'center' }}>
+                <div style={{ width: '4rem', height: '4rem', margin: '0 auto 1.5rem', borderRadius: '50%', backgroundColor: 'rgba(197,160,89,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-primary)' }}>
+                  <CheckCircle2 size={36} />
                 </div>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 400 }}>Inquiry Received</h3>
+                <p style={{ color: 'var(--text-muted)', marginTop: '0.75rem', fontSize: '0.95rem', maxWidth: '28rem', margin: '0.75rem auto 0', lineHeight: 1.65 }}>
+                  Thank you for contacting {VENUE.fullName}. Our event management desk will review
+                  your requested dates and contact you within 24 hours.
+                </p>
+                <button
+                  onClick={() => {
+                    setSubmitted(false);
+                    setFormData({
+                      name: '',
+                      phone: '',
+                      email: '',
+                      eventType: '',
+                      eventDate: '',
+                      guests: '',
+                      message: '',
+                    });
+                  }}
+                  className="btn-gold"
+                  style={{ marginTop: '2rem' }}
+                >
+                  Submit Another Inquiry
+                </button>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="card-luxury-light p-8 sm:p-10 lg:p-12 border border-[#dfdbd2] rounded-2xl shadow-xl space-y-6"
+                className="card-luxury-light reservation-form-box"
               >
-                <div className="pb-5 border-b border-[#eeebe5]">
-                  <h3 className="font-heading text-2xl sm:text-3xl text-charcoal font-normal">
+                <div className="form-header-bar">
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.85rem', fontWeight: 400 }}>
                     Event Reservation Inquiry
                   </h3>
-                  <p className="text-muted text-xs sm:text-sm mt-1.5 font-light">
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginTop: '0.35rem', fontWeight: 300 }}>
                     Complete the details below to check hall availability and schedule an exclusive private walkthrough.
                   </p>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-5">
+                <div className="form-grid-2">
                   <div>
                     <input
                       type="text"
                       placeholder="Your Full Name *"
                       value={formData.name}
                       onChange={(e) => handleChange('name', e.target.value)}
-                      className={inputClass('name')}
+                      className={`luxury-input ${errors.name ? 'error' : ''}`}
                     />
-                    {errors.name && <p className="text-red-500 text-xs mt-1.5 pl-1">{errors.name}</p>}
+                    {errors.name && <p className="form-error-msg">{errors.name}</p>}
                   </div>
                   <div>
                     <input
@@ -252,29 +255,29 @@ export default function Contact() {
                       placeholder="Mobile / Contact Number *"
                       value={formData.phone}
                       onChange={(e) => handleChange('phone', e.target.value)}
-                      className={inputClass('phone')}
+                      className={`luxury-input ${errors.phone ? 'error' : ''}`}
                     />
-                    {errors.phone && <p className="text-red-500 text-xs mt-1.5 pl-1">{errors.phone}</p>}
+                    {errors.phone && <p className="form-error-msg">{errors.phone}</p>}
                   </div>
                 </div>
 
-                <div>
+                <div className="form-row">
                   <input
                     type="email"
                     placeholder="Email Address *"
                     value={formData.email}
                     onChange={(e) => handleChange('email', e.target.value)}
-                    className={inputClass('email')}
+                    className={`luxury-input ${errors.email ? 'error' : ''}`}
                   />
-                  {errors.email && <p className="text-red-500 text-xs mt-1.5 pl-1">{errors.email}</p>}
+                  {errors.email && <p className="form-error-msg">{errors.email}</p>}
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-5">
+                <div className="form-grid-2">
                   <div>
                     <select
                       value={formData.eventType}
                       onChange={(e) => handleChange('eventType', e.target.value)}
-                      className={inputClass('eventType')}
+                      className={`luxury-input ${errors.eventType ? 'error' : ''}`}
                     >
                       <option value="">Select Event Category *</option>
                       {EVENT_OPTIONS.map((opt) => (
@@ -283,40 +286,41 @@ export default function Contact() {
                         </option>
                       ))}
                     </select>
-                    {errors.eventType && <p className="text-red-500 text-xs mt-1.5 pl-1">{errors.eventType}</p>}
+                    {errors.eventType && <p className="form-error-msg">{errors.eventType}</p>}
                   </div>
                   <div>
                     <input
                       type="date"
                       value={formData.eventDate}
                       onChange={(e) => handleChange('eventDate', e.target.value)}
-                      className={inputClass('eventDate')}
+                      className="luxury-input"
                     />
                   </div>
                 </div>
 
-                <div>
+                <div className="form-row">
                   <input
                     type="number"
                     placeholder="Estimated Guest Count (e.g. 500, 1500)"
                     value={formData.guests}
                     onChange={(e) => handleChange('guests', e.target.value)}
-                    className={inputClass('guests')}
+                    className="luxury-input"
                     min="50"
                   />
                 </div>
 
-                <div>
+                <div className="form-row">
                   <textarea
                     placeholder="Provide any specific requirements, timing, catering preferences or questions..."
                     value={formData.message}
                     onChange={(e) => handleChange('message', e.target.value)}
                     rows={4}
-                    className={`${inputClass('message')} resize-none`}
+                    className="luxury-input"
+                    style={{ resize: 'none' }}
                   />
                 </div>
 
-                <button type="submit" className="btn-gold w-full justify-center py-4 text-sm font-semibold shadow-[0_10px_30px_rgba(197,160,89,0.3)]">
+                <button type="submit" className="btn-gold form-submit-full">
                   <Send size={16} />
                   Submit Booking Inquiry
                 </button>
