@@ -7,6 +7,7 @@ import VideoShowcase from '../components/VideoShowcase';
 import Facilities from '../components/Facilities';
 import Events from '../components/Events';
 import Gallery from '../components/Gallery';
+import Reviews from '../components/Reviews';
 import EnquiryCTA from '../components/EnquiryCTA';
 import Contact from '../components/Contact';
 import FloatingButton from '../components/FloatingButton';
@@ -25,6 +26,7 @@ export default function Home() {
         <Facilities />
         <Events />
         <Gallery />
+        <Reviews />
         <EnquiryCTA />
         <Contact />
       </main>

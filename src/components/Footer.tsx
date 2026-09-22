@@ -82,21 +82,63 @@ export default function Footer() {
               Contact & Visits
             </h4>
             <ul className="footer-links-list">
-              <li style={{ color: '#ffffff', fontWeight: 500 }}>{CONTACT.phone}</li>
-              <li>{CONTACT.email}</li>
-              <li style={{ lineHeight: 1.6 }}>{CONTACT.address}</li>
+              <li>
+                <a href={`tel:${CONTACT.tel}`} style={{ color: '#ffffff', fontWeight: 600 }}>
+                  {CONTACT.phone} ({CONTACT.phoneFormatted})
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${CONTACT.email}`} style={{ color: '#9ca3af' }}>
+                  {CONTACT.email}
+                </a>
+              </li>
+              <li style={{ lineHeight: 1.6 }}>
+                <a
+                  href={CONTACT.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#d1d5db', display: 'inline-block' }}
+                >
+                  {CONTACT.address}
+                </a>
+              </li>
+              <li style={{ fontSize: '0.75rem', color: 'var(--gold-light)', marginTop: '0.35rem' }}>
+                Plus Code: <strong>{CONTACT.plusCode}</strong>
+              </li>
             </ul>
           </div>
 
           {/* Concierge Hours */}
           <div>
             <h4 className="footer-col-title">
-              Concierge Hours
+              Hours & Ratings
             </h4>
             <p style={{ fontSize: '0.875rem', color: '#d1d5db', fontWeight: 300 }}>{CONTACT.workingHours}</p>
-            <p style={{ fontSize: '0.75rem', color: '#6b7280', marginTop: '0.5rem' }}>Available 7 days a week for private site appointments.</p>
+            <p style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '0.35rem' }}>Open 7 days a week for event bookings & site tours.</p>
 
-            <div style={{ marginTop: '2rem' }}>
+            <a
+              href={CONTACT.mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                marginTop: '1rem',
+                padding: '0.45rem 0.85rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.07)',
+                border: '1px solid rgba(197, 160, 89, 0.4)',
+                borderRadius: '9999px',
+                fontSize: '0.75rem',
+                color: '#ffffff',
+                textDecoration: 'none',
+              }}
+            >
+              <span style={{ color: '#f59e0b', fontWeight: 700 }}>★ 4.0</span>
+              <span style={{ color: '#d1d5db' }}>({CONTACT.reviewCount} Google Reviews)</span>
+            </a>
+
+            <div style={{ marginTop: '1.75rem' }}>
               <button
                 onClick={scrollToTop}
                 style={{

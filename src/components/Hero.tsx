@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import heroVideo from '../assets/videos/hero-wedding.mp4';
-import { IMAGES, STATS } from '../data/venueData';
+import { IMAGES, STATS, CONTACT } from '../data/venueData';
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -32,12 +32,27 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="hero-pill-badge"
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '2rem' }}
         >
-          <Sparkles size={13} style={{ color: 'var(--gold-primary)' }} />
-          <span className="hero-pill-text">
-            Premier Convention Centre &amp; Auditorium
-          </span>
+          <div className="hero-pill-badge" style={{ marginBottom: 0 }}>
+            <Sparkles size={13} style={{ color: 'var(--gold-primary)' }} />
+            <span className="hero-pill-text">
+              Alappuzha, Kerala &bull; Convention Centre
+            </span>
+          </div>
+
+          <a
+            href={CONTACT.mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-pill-badge"
+            style={{ marginBottom: 0, textDecoration: 'none', cursor: 'pointer' }}
+          >
+            <span style={{ color: '#fbbf24', fontSize: '0.85rem' }}>★</span>
+            <span className="hero-pill-text" style={{ color: '#ffffff' }}>
+              4.0 ({CONTACT.reviewCount} Google Reviews)
+            </span>
+          </a>
         </motion.div>
 
         <motion.h1

@@ -114,10 +114,10 @@ export default function Contact() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
               {[
-                { icon: Phone, label: 'Direct Inquiries', value: CONTACT.phone, href: `tel:${CONTACT.phone.replace(/\s/g, '')}`, target: '_self' },
+                { icon: Phone, label: 'Direct Inquiries', value: `${CONTACT.phone} / ${CONTACT.phoneFormatted}`, href: `tel:${CONTACT.tel}`, target: '_self' },
                 { icon: Mail, label: 'Electronic Mail', value: CONTACT.email, href: `mailto:${CONTACT.email}`, target: '_self' },
                 { icon: MapPin, label: 'Location & Address', value: CONTACT.address, href: CONTACT.mapUrl, target: '_blank' },
-                { icon: Clock, label: 'Concierge Hours', value: CONTACT.workingHours, href: '#', target: '_self' },
+                { icon: Clock, label: 'Concierge Hours', value: CONTACT.workingHours, href: CONTACT.mapUrl, target: '_blank' },
               ].map(({ icon: Icon, label, value, href, target }) => (
                 <motion.a
                   key={label}
@@ -159,7 +159,7 @@ export default function Contact() {
               <motion.a
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.96 }}
-                href={`tel:${CONTACT.phone.replace(/\s/g, '')}`}
+                href={`tel:${CONTACT.tel}`}
                 className="btn-primary"
               >
                 <Phone size={15} />
@@ -178,10 +178,18 @@ export default function Contact() {
             </div>
             
             {/* Direct Google Maps Action */}
-            <div style={{ marginTop: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 1rem', background: '#ffffff', border: '1px solid var(--stone-border)', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8125rem', color: 'var(--text-charcoal)', fontWeight: 500 }}>
-                <MapPin size={16} style={{ color: 'var(--gold-primary)' }} />
-                <span>Rajadhani Convention Centre, Kerala</span>
+            <div style={{ marginTop: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.85rem 1.15rem', background: '#ffffff', border: '1px solid var(--stone-border)', borderRadius: 'var(--radius-md)', flexWrap: 'wrap', gap: '0.75rem' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8125rem', color: 'var(--text-charcoal)', fontWeight: 600 }}>
+                  <MapPin size={16} style={{ color: 'var(--gold-primary)' }} />
+                  <span>Rajadhani Convention Centre</span>
+                  <span style={{ backgroundColor: '#fef3c7', color: '#92400e', padding: '0.15rem 0.5rem', borderRadius: '4px', fontSize: '0.72rem', fontWeight: 600 }}>
+                    ★ 4.0 (96)
+                  </span>
+                </div>
+                <p style={{ fontSize: '0.75rem', color: '#6b7280', marginTop: '0.2rem' }}>
+                  Plus Code: <strong>{CONTACT.plusCode}</strong> • Mamood Road, Palakkulam
+                </p>
               </div>
               <a
                 href={CONTACT.mapUrl}

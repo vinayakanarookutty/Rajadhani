@@ -18,16 +18,68 @@ export const VENUE = {
 };
 
 export const CONTACT = {
-  phone: '+91 98765 43210',
+  phone: '099617 45918',
+  phoneFormatted: '+91 99617 45918',
+  tel: '09961745918',
   email: 'info@rajadhaniconventioncentre.com',
-  address: 'Rajadhani Convention Centre, National Highway Bypass, Kerala, India',
-  workingHours: 'Mon – Sun: 9:00 AM – 9:00 PM',
-  whatsapp: '+919876543210',
+  address: 'Mamood Road, Palakkulam, Alappuzha, Keralam 688006',
+  district: 'Alappuzha',
+  state: 'Keralam',
+  pincode: '688006',
+  plusCode: 'G8CQ+CW Alappuzha, Keralam',
+  status: 'Open · Closes 6 pm',
+  workingHours: 'Open · Closes 6 pm (Mon – Sun: 9:00 AM – 6:00 PM)',
+  whatsapp: '919961745918',
+  googleRating: '4.0',
+  reviewCount: '96',
+  category: 'Convention center',
   mapEmbedUrl:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.568472551469!2d76.33727127592477!3d9.521015720938095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0885e24c3fb4d3%3A0x88625b41f0839714!2sRajadhani%20convention%20center!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin',
   mapUrl:
-    'https://www.google.com/maps/place/Rajadhani+convention+center/@9.5210104,76.3398462,17z/data=!3m1!4b1!4m6!3m5!1s0x3b0885e24c3fb4d3:0x88625b41f0839714!8m2!3d9.5210104!4d76.3398462!16s%2Fg%2F11slqpqq6q',
+    'https://www.google.com/maps/place/Rajadhani+convention+center/@9.5210104,76.3398462,17z/data=!3m1!4b1!4m6!3m5!1s0x3b0885e24c3fb4d3:0x88625b41f0839714!8m2!3d9.5210104!4d76.3398462!16s%2Fg%2F11slqpqq6q!18m1!1e1?entry=ttu',
+  reviewSummaryQuotes: [
+    'Good place for hosting small programs',
+    'Air Conditioned Hall with enough space for parking.',
+    'Good specious, nice customer service',
+  ],
 };
+
+export const GOOGLE_REVIEWS = [
+  {
+    id: 'sandeep-sathish',
+    author: 'Sandeep Sathish',
+    badge: 'Local Guide · 134 reviews · 1,437 photos',
+    rating: 5,
+    time: '2 years ago',
+    avatarLetter: 'S',
+    avatarColor: '#d97706',
+    text: 'A Good option in the nearby to arrange family / Office Functions. Air Conditioned Hall with enough space for parking. Bit difficult to find the building at first sight.',
+    ownerResponse: 'Thanks for the review.',
+    highlights: ['Family / Office Functions', 'Air Conditioned Hall', 'Parking Space'],
+  },
+  {
+    id: 'noushu-3',
+    author: 'Noushu 3',
+    badge: 'Local Guide · 207 reviews · 1,318 photos',
+    rating: 5,
+    time: '4 months ago',
+    avatarLetter: 'N',
+    avatarColor: '#2563eb',
+    text: 'The convention center is very beautiful. There is a very spacious parking area to park cars. The AC inside the convention center is not very cold.',
+    highlights: ['Spacious Parking', 'Beautiful Architecture'],
+  },
+  {
+    id: 'ramanathan-m',
+    author: 'ramanathan m',
+    badge: 'Local Guide · 219 reviews · 178 photos',
+    rating: 4,
+    time: '4 months ago',
+    avatarLetter: 'R',
+    avatarColor: '#059669',
+    text: 'Air conditioned hall with capacity of 250 to 300. Separate hall for function and lunch. One problem is lack of parking space.',
+    highlights: ['Capacity 250 to 300', 'Separate Function & Lunch Hall', 'Air Conditioned'],
+  },
+];
 
 export const SOCIAL = {
   instagram: 'https://instagram.com',
@@ -42,6 +94,7 @@ export const NAV_LINKS = [
   { label: 'Facilities', href: '#facilities' },
   { label: 'Events', href: '#events' },
   { label: 'Gallery', href: '#gallery' },
+  { label: 'Reviews', href: '#reviews' },
   { label: 'Contact', href: '#contact' },
 ];
 

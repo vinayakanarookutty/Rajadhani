@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Calendar, PhoneCall, Sparkles } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
+import { CONTACT } from '../data/venueData';
+
 export default function EnquiryCTA() {
   const { ref, isVisible } = useScrollAnimation(0.2);
 
@@ -52,7 +54,7 @@ export default function EnquiryCTA() {
             <motion.a
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.96 }}
-              href="tel:+919876543210"
+              href={`tel:${CONTACT.phone.replace(/\s/g, '')}`}
               className="btn-white-ghost"
             >
               <PhoneCall size={16} />
